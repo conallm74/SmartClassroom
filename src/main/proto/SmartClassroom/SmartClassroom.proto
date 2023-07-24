@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package SmartClassroom;
+
+// make the package valid in java create the options
+option java_package = "com.proto.SmartClassroom";
+// option to organise code into multiple files
+option java_multiple_files = true;
+
+message GreetingRequest {
+  // create a message for the client to send the first name, to which the server can respond
+
+  string first_name = 1;
+}
+
+// create the answer from the server
+
+message GreetingResponse {
+  string result = 1;
+}
+
+// define a service
+
+service GreetingService {
+  // define a unary endpoint called greet
+  rpc greet(GreetingRequest) returns (GreetingResponse);
+  // after this, gradle -> tasks -> other -> generateProto
+}
+
+message ContentIdRequest {
+  // create a message from the client for the server can respond
+  int32 content_Id = 1;
+}
+
+// answer from the server
+
+message ContentIdResponse {
+  int32 result = 1;
+}
+
+service ContentSelection {
+  // define a unary endpoint called ContentSelection
+  rpc ContentSelection(ContentIdRequest) returns (ContentIdResponse);
+}
+
+// next job is to implement this rpc endpoint on the server side
+
+
