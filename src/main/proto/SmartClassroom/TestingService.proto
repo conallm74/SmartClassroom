@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package SmartClassroom;
+
+// make the package valid in java create the options
+option java_package = "com.proto.SmartClassroom";
+// option to organise code into multiple files
+option java_multiple_files = true;
+
+message TestRequest {
+  string the_test = 1;
+}
+message TestResponse {
+  string result = 1;
+}
+message UpLoadTestRequest {
+  string request = 1;
+}
+message UploadTestResponse {
+  string result = 1;
+}
+/*
+Unary, method 3 of service 2
+Upload marks
+ */
+message UpLoadMarksRequest {
+  string marks_request = 1;
+}
+message UpLoadMarksResponse {
+  string marks_response = 1;
+}
+
+service TestingService {
+  rpc CreateTest(TestRequest) returns (TestResponse);
+  //   Unary streaming service for service two method 1
+  rpc UpLoadTest(UpLoadTestRequest) returns (UploadTestResponse);
+  // unary upload marks
+  rpc UpLoadMarks(UpLoadMarksRequest) returns (UploadTestResponse);
+
+}

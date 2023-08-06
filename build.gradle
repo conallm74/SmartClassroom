@@ -28,7 +28,7 @@ protobuf {
         }
     }
 }
-
+ 
 sourceSets.main.java.srcDir new File(buildDir, 'generated/source')
 
 dependencies {

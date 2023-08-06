@@ -1,5 +1,6 @@
 package SmartClass.server;
 
+import SmartClass.server.serviceOne.JoinCollabImpl;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 
@@ -17,6 +18,11 @@ public class SmartClassServer {
                 // register service for the grpc server
                 // next need to write client code that will call this function on the server and print answer in terminal
                 .addService(new SmartClassServerImpl())
+                .addService(new JoinCollabImpl())
+                .addService(new UpdateCollabImpl())
+                .addService(new TestingServiceImpl())
+                .addService(new JoinCollabImpl())
+                .addService(new StreamDrawImpl())
                 .build();
 
         // start the server
