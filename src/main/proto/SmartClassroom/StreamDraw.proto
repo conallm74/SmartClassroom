@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package SmartClassroom;
+
+// make the package valid in java create the options
+option java_package = "com.proto.SmartClassroom";
+// option to organise code into multiple files
+option java_multiple_files = true;
+
+
+/*
+   // client side streaming for service one method 2
+    */
+
+message DrawRequest{
+  string draw = 1;
+}
+message DrawResponse {
+  string result = 1;
+}
+service drawingMate {
+  // client side streaming for service one method 2
+  rpc StreamDrawUpdates(stream DrawRequest) returns (DrawResponse);
+}

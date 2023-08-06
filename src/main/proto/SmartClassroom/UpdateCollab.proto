@@ -1,0 +1,25 @@
+
+syntax = "proto3";
+
+package SmartClassroom;
+
+// make the package valid in java create the options
+option java_package = "com.proto.SmartClassroom";
+// option to organise code into multiple files
+option java_multiple_files = true;
+
+/*
+bidirectional streaming RPC for service three method 3
+ */
+
+message UpdateCollaborationRequest {
+  string update_request = 1;
+}
+
+message UpdateCollaborationResponse {
+  string result = 1;
+}
+
+service TheCollaborationUpdates {
+  rpc UpdateCollaborationSession(stream UpdateCollaborationRequest) returns (stream UpdateCollaborationResponse);
+}

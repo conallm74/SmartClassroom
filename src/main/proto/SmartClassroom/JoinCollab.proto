@@ -1,0 +1,44 @@
+
+syntax = "proto3";
+
+package SmartClassroom;
+
+// make the package valid in java create the options
+option java_package = "com.proto.SmartClassroom";
+// option to organise code into multiple files
+option java_multiple_files = true;
+
+
+/*
+server side streaming RPC for service three method 2
+ */
+
+message JoinRequest {
+  string collaboration_request = 1;
+}
+
+message JoinResponse {
+  string result = 1;
+}
+
+
+// Unary streaming for method one service 3
+
+
+message ColabRequest {
+  string start_collaboration_request = 1;
+}
+message ColabResponse {
+  string result = 1;
+}
+
+
+
+service CollaborationSession {
+  // server side streaming RPC for service three method 2
+  rpc JoinCollaborationSession(JoinRequest) returns (stream JoinResponse);
+  // Unary streaming for method one service 3
+  rpc CreateColabSession(ColabRequest) returns (ColabResponse);
+}
+
+
